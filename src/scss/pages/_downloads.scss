@@ -1,0 +1,62 @@
+@use "../abstracts/variables" as *;
+
+.p-downloads {
+
+  .downloads-wrapper {
+    border: 1px solid rgba(244, 234, 224, 1);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+
+    .download-item {
+      overflow: hidden;
+      position: relative;
+      max-height: 300px;
+
+      &:hover {
+        &::after {
+          content: "";
+          width: 100%;
+          height: 100%;
+          background-color: #33333320;
+          position: absolute;
+          left: 0;
+        }
+
+        img {
+          transform: scale(1.025);
+        }
+      }
+
+      img {
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
+        display: inline-block;
+        transition: .2s all ease-out;
+      }
+
+      &-details {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        background-color: #333;
+        color: #fff;
+
+        .badge {
+          outline: 3px solid $primary-color;
+          background-color: rgb(32, 32, 32);
+          padding: 4px;
+          margin-left: 12px;
+          display: inline-block;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}

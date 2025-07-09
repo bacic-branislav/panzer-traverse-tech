@@ -1,0 +1,25 @@
+@use "../../abstracts/variables" as *;
+
+.base-button {
+  padding: $padding-y-lg $padding-x-lg;
+  border-radius: $border-radius;
+  background-color: $button-bg;
+  font-size: $button-text-size;
+  border: 2px solid $black-color;
+  letter-spacing: $letter-spacing;
+  color: $button-text;
+  cursor: pointer;
+  font-weight: 600;
+  transition: .2s all ease;
+  text-transform: uppercase;
+  line-height: 20px;
+
+  &:hover {
+    background-color: #2220;
+    color: $button-bg;
+  }
+
+  &.btn-sm {
+    padding: $padding-y-sm $padding-x-sm;
+  }
+}

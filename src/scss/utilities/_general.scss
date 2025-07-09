@@ -1,0 +1,13 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/breakpoints" as *;
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+
+  @include media-breakpoint-up(xl) {
+    padding: 0;
+  }
+}

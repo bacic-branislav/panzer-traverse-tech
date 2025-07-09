@@ -1,0 +1,50 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/breakpoints" as *;
+
+@font-face {
+  font-family: 'DIN 1451 Std Engschrift';
+  font-style: normal;
+  font-weight: normal;
+  src: local('DIN 1451 Std Engschrift'), url('@/assets/fonts/DINEngschriftStd.woff') format('woff');
+}
+  
+
+  @font-face {
+  font-family: 'DIN 1451 Std Mittelschrift';
+  font-style: normal;
+  font-weight: normal;
+  src: local('DIN 1451 Std Mittelschrift'), url('@/assets/fonts/DINMittelschriftStd.woff') format('woff');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+.staatliches-regular {
+  font-family: "Staatliches", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: "DIN 1451 Std Mittelschrift";
+  color: $font-color;
+  letter-spacing: $letter-spacing;
+}
+
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+  color: $font-color;
+}
+
+h1 {
+  font-size: 34px;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 64px;
+  }
+}
+
+h3 {
+  font-size: 18px;
+}
