@@ -1,6 +1,14 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/breakpoints" as *;
 
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+@font-face {
+  font-family: "remixicon";
+  src: url("//cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.woff2") format("woff2");
+  font-display: swap;
+}
+
 @font-face {
   font-family: 'DIN 1451 Std Engschrift';
   font-style: normal;
@@ -9,14 +17,13 @@
 }
   
 
-  @font-face {
+@font-face {
   font-family: 'DIN 1451 Std Mittelschrift';
   font-style: normal;
   font-weight: normal;
   src: local('DIN 1451 Std Mittelschrift'), url('@/assets/fonts/DINMittelschriftStd.woff') format('woff');
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
 .staatliches-regular {
   font-family: "Staatliches", sans-serif;
@@ -25,7 +32,7 @@
 }
 
 body {
-  font-family: "DIN 1451 Std Mittelschrift";
+  font-family: "DIN 1451 Std Mittelschrift", sans-serif;
   color: $font-color;
   letter-spacing: $letter-spacing;
 }
@@ -33,6 +40,7 @@ body {
 
 a {
   text-decoration: none;
+  display: inline-block;
   font-weight: 500;
   color: $font-color;
 }

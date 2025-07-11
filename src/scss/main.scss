@@ -6,7 +6,12 @@
 @use "utilities/general";
 
 @use "components/base/base-button";
-@use "components/base/base-navigations";
-@use "components/header-element";
+@use "components/elements/navigation-element";
 
-@use "pages/downloads";
+@use "components/elements/breadcrumbs-element";
+@use "components/elements/hero-element";
+
+@use "pages/p-downloads";
+@use "pages/p-product";
+@use "pages/p-details";
+@use "pages/p-auth";

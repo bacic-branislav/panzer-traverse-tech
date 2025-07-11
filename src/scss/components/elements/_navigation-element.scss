@@ -1,5 +1,10 @@
-.base-navigation {
+.navigation-element {
+  position: fixed;
+  width: 100%;
+  background-color: white;
   padding: 5px 0;
+  z-index: 1;
+  top: 0;
  
   .container {
     display: flex;
@@ -12,6 +17,10 @@
 
       &.router-link-exact-active {
         color: #42b983;
+      }
+
+      &:hover {
+        text-decoration: underline;
       }
     }
 

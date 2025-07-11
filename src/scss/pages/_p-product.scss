@@ -1,33 +1,18 @@
 @use "../abstracts/variables" as *;
 
-.p-downloads {
-
-  .downloads-wrapper {
+.p-product {
+  .wrapper {
     border: 1px solid rgba(244, 234, 224, 1);
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 30px;
+    margin: 50px 0;
 
-    .download-item {
+    .details-item {
       overflow: hidden;
       position: relative;
       max-height: 300px;
-
-      &:hover {
-        &::after {
-          content: "";
-          width: 100%;
-          height: 100%;
-          background-color: #33333320;
-          position: absolute;
-          left: 0;
-        }
-
-        img {
-          transform: scale(1.025);
-        }
-      }
 
       img {
         height: 300px;

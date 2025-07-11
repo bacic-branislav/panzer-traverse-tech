@@ -5,10 +5,13 @@ export type ExploreState = {
 
 export type ProductState = {
   products: Array <Products>;
+  details: any;
 }
 
 export type Products = {
-  name: String
+  name: string,
+  slug: string,
+  parts: number
 }
 
 

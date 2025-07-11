@@ -1,0 +1,84 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/breakpoints" as *;
+
+.p-details {
+  .download-section {
+    border: 1px solid rgba(244, 234, 224, 1);
+    padding: 20px;
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+
+      @include media-breakpoint-up(md) {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    .content {
+      margin-block: 20px;
+
+      @include media-breakpoint-up(md) {
+        margin-left: 20px;
+        margin-block: 0;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+
+        @include media-breakpoint-up(md) {
+          justify-content: flex-start;
+        }
+
+        .title {
+          margin-right: 12px;
+        }
+
+        .rating {
+          i {
+            color: #fea322;
+            margin-right: -2px;
+          }
+
+        }
+      }
+
+      .info-item {
+        i {
+          color: #aeaeae;
+        }
+
+        @include media-breakpoint-up(md) {
+          display: inline-flex;
+          align-items: flex-start;
+          margin-right: 12px;
+
+          i {
+            margin-right: 2px;
+            margin-top: -2px;
+          }
+        }
+      }
+    }
+
+    .base-button {
+      width: 100%;
+
+      @include media-breakpoint-up(md) {
+        width: auto;
+        margin-left: auto;
+      }
+    }
+  }
+
+}
