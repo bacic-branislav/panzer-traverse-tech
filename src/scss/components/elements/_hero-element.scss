@@ -1,24 +1,37 @@
+@use "@/scss/abstracts/breakpoints" as *;
+@use "@/scss/abstracts/variables" as *;
+@use "@/scss/abstracts/mixins" as *;
+
 .hero-element {
+  background-color: #2c3e50;
+  background-image: url("@/assets/images/header-default.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  position: relative;
+  justify-content: center;
 
   .content {
-    margin: 100px 0;
-    color: white;
-
-    .title {}
-    .subtitle {
-      font-size: 22px;
-    }
-  }
-
-  img {
-    height: 100%;
+    color: #fff;
     width: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    z-index: -1;
+
+    .subtitle {
+      margin: 12px 0 32px 0;
+      line-height: 22px;
+    }
+
+    .action-elements {
+      .base-button {
+        width: 100%;
+        margin-bottom: 8px;
+
+        @include media-breakpoint-up(md) {
+          width: auto;
+          margin-right: 8px;
+        }
+      }
+    }
   }
 }

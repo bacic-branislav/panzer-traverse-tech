@@ -1,5 +1,18 @@
 <script setup lang="ts">
-import BaseButton from '@/components/base/BaseButton.vue';
+import BaseButton from "@/components/base/BaseButton.vue";
+import { useAuthStore } from "@/store/auth/user";
+import { useRouter } from "vue-router";
+import { computed } from "vue";
+import { NAVIGATION } from "@/utilities/routes";
+
+const authStore = useAuthStore();
+const router = useRouter();
+const user = computed(() => authStore.user);
+
+const submitLogout = async () => {
+  await authStore.logout();
+  await router.push(NAVIGATION.home);
+}
 
 </script>
 
@@ -11,14 +24,20 @@ import BaseButton from '@/components/base/BaseButton.vue';
       </RouterLink>
 
       <div class="links">
-        <RouterLink to="/">Home</RouterLink> |
-        <RouterLink to="/downloads">Downloads</RouterLink>
+        <RouterLink :to="NAVIGATION.home">Home</RouterLink> |
+        <RouterLink :to="NAVIGATION.downloads">Downloads</RouterLink> |
+        <RouterLink :to="NAVIGATION.about">About</RouterLink>
       </div>
 
       <div>
-        <RouterLink to="/login">Login</RouterLink> |
-        <RouterLink to="/register">Register</RouterLink>
+        <template v-if="!user">
+          <RouterLink :to="NAVIGATION.login">Login</RouterLink> |
+          <RouterLink :to="NAVIGATION.register">Register</RouterLink>
+        </template>
+
+        <BaseButton v-else @click="submitLogout">Logout</BaseButton>
       </div>
     </div>
+    {{authStore.user}}
   </nav>
 </template>

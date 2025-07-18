@@ -12,7 +12,9 @@
     "firebase": "^11.10.0",
     "pinia": "^3.0.1",
     "vue": "^3.2.13",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vee-validate": "^4.12.6",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.4.0",

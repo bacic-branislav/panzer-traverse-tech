@@ -1,0 +1,64 @@
+.base-input {
+  margin-bottom: 16px;
+
+  &-label-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+
+    .label {
+      font-size: 16px;
+      font-weight: 600;
+      margin-right: auto;
+    }
+
+    .hint {
+      font-size: 14px;
+      font-family: "Roboto Thin", sans-serif;
+      letter-spacing: normal;
+      margin-top: -1px;
+
+      i {
+        margin-right: -2px;
+        color: cadetblue;
+      }
+    }
+  }
+
+  &-wrapper {
+    position: relative;
+
+    input {
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      border: 2px solid #d0d0d0;
+      outline: none;
+      font-family: "Roboto Light", sans-serif;
+
+      &:focus {
+        border: 2px solid #d0d0d0;
+      }
+    }
+
+    i {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 5px;
+      color: #42b983;
+    }
+  }
+
+  .message {
+    font-size: 12px;
+    display: flex;
+    margin-top: 4px;
+    font-weight: 500;
+
+    i {
+      font-size: 14px;
+      margin-right: 2px;
+      color: #872b2b;
+    }
+  }
+}

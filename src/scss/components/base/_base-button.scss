@@ -5,17 +5,16 @@
   border-radius: $border-radius;
   background-color: $button-bg;
   font-size: $button-text-size;
-  border: 2px solid $black-color;
-  letter-spacing: $letter-spacing;
+  border: none;
   color: $button-text;
   cursor: pointer;
-  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
   transition: .2s all ease;
-  text-transform: uppercase;
+  letter-spacing: .5px;
 
   &:hover {
-    background-color: #2220;
-    color: $button-bg;
+    background-color: $black-color;
   }
 
   &.btn-sm {

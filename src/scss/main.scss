@@ -4,13 +4,21 @@
 @use "utilities/reset";
 @use "utilities/typography";
 @use "utilities/general";
+@use "utilities/helpers";
 
 @use "components/base/base-button";
+@use "components/base/base-input";
+@use "components/base/base-badge";
+
 @use "components/elements/navigation-element";
-
-@use "components/elements/breadcrumbs-element";
 @use "components/elements/hero-element";
+@use "components/elements/jumbotron-element";
+@use "components/elements/footer-element";
+@use "components/elements/card-element";
 
+@use "components/skeleton/download-item-skeleton";
+
+@use "pages/p-home";
 @use "pages/p-downloads";
 @use "pages/p-product";
 @use "pages/p-details";

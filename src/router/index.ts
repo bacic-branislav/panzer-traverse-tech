@@ -1,5 +1,14 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/plugins/firebase";
 import HomePage from '../views/HomePage.vue';
+
+const checkLoggedUser = (to: any, from: any, next: any) => {
+  onAuthStateChanged(auth, async (user) => {
+    if (user) next({ name: 'downloads' })
+    else next()
+  });
+}
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -9,10 +18,16 @@ const routes: Array<RouteRecordRaw> = [
     component: HomePage
   },
   {
+    path: '/about',
+    name: 'about',
+    meta: { title: "About Us | Panzer Controls" },
+    component: () => import(/* webpackChunkName: "about" */ '../views/AboutPage.vue'),
+  },
+  {
     path: '/downloads',
     name: 'downloads',
     meta: { title: "Downloads | Panzer Controls" },
-    component: () => import(/* webpackChunkName: "downloads" */ '../views/DownloadsPage.vue')
+    component: () => import(/* webpackChunkName: "downloads" */ '../views/DownloadsPage.vue'),
   },
   {
     path: '/downloads/:product',
@@ -24,13 +39,15 @@ const routes: Array<RouteRecordRaw> = [
     path: '/login',
     name: 'login',
     meta: { title: "Login | Panzer Controls" },
-    component: () => import(/* webpackChunkName: "login" */ '../views/auth/LoginPage.vue')
+    component: () => import(/* webpackChunkName: "login" */ '../views/auth/LoginPage.vue'),
+    beforeEnter: checkLoggedUser
   },
   {
     path: '/register',
     name: 'register',
     meta: { title: "Register | Panzer Controls" },
-    component: () => import(/* webpackChunkName: "register" */ '../views/auth/RegisterPage.vue')
+    component: () => import(/* webpackChunkName: "register" */ '../views/auth/RegisterPage.vue'),
+    beforeEnter: checkLoggedUser
   },
   {
     path: '/:catchAll(.*)',
@@ -42,7 +59,10 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior() {
+    return { top: 0 }
+  },
 });
 
 router.beforeEach((to:any) => {

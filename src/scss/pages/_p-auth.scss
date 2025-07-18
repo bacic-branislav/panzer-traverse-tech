@@ -1,7 +1,28 @@
 .p-auth {
   .container {
-    max-width: 500px;
-    outline: 1px dashed;
+    max-width: 550px;
+  }
+
+  .header {
     text-align: center;
+    margin-bottom: 35px;
+  }
+
+  .form-wrapper {
+    background-color: #f2f2f2;
+    padding: 50px;
+
+    .base-button {
+      margin: 20px 0 30px 0;
+      width: 100%;
+    }
+  }
+
+  .error-msg {
+    display: none;
+
+    &.visible {
+      display: block;
+    }
   }
 }

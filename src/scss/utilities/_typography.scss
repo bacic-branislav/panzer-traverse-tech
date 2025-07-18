@@ -2,12 +2,14 @@
 @use "../abstracts/breakpoints" as *;
 
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 @font-face {
   font-family: "remixicon";
   src: url("//cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.woff2") format("woff2");
   font-display: swap;
 }
+
 
 @font-face {
   font-family: 'DIN 1451 Std Engschrift';
@@ -24,6 +26,13 @@
   src: local('DIN 1451 Std Mittelschrift'), url('@/assets/fonts/DINMittelschriftStd.woff') format('woff');
 }
 
+.roboto-regular {
+   font-family: "Roboto", sans-serif;
+   font-optical-sizing: auto;
+   font-weight: 400;
+   font-style: normal;
+   font-variation-settings: "wdth" 100;
+}
 
 .staatliches-regular {
   font-family: "Staatliches", sans-serif;
@@ -32,9 +41,8 @@
 }
 
 body {
-  font-family: "DIN 1451 Std Mittelschrift", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: $font-color;
-  letter-spacing: $letter-spacing;
 }
 
 
@@ -46,13 +54,22 @@ a {
 }
 
 h1 {
-  font-size: 34px;
+  font-family: "Staatliches", sans-serif;
+  font-size: 36px;
+  line-height: 40px;
 
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-up(md) {
+    letter-spacing: 4px;
     font-size: 64px;
+    line-height: 68px;
   }
 }
 
+h2 {
+  font-family: "Staatliches", sans-serif;
+  font-size: 30px;
+}
+
 h3 {
-  font-size: 18px;
+  font-size: 20px;
 }

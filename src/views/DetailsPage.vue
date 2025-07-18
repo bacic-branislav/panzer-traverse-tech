@@ -1,81 +1,115 @@
-<template>
-  <main class="p-details">
-    <div class="container">
-      <RouterLink to="/downloads">
-        <i class="ri-arrow-left-s-line"></i>
-        Back
-      </RouterLink>
-
-      <div class="download-section">
-        <img :src="require(`@/assets/images/products/${route.params.product}.jpg`)" alt="">
-
-        <div class="content">
-          <div class="header">
-            <h2 class="title">{{ product.name }}</h2>
-
-            <div class="rating">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-line"></i>
-
-              (12)
-            </div>
-          </div>
-          <p class="info-item">
-            <i class="ri-calendar-fill"></i>
-            July 4, 2025
-          </p>
-          <p class="info-item">
-            <i class="ri-download-cloud-2-fill"></i>
-            {{ product.downloads }} Downloads
-          </p>
-          <p class="info-item">
-            <i class="ri-chat-1-fill"></i>
-            2 Comments
-          </p>
-        </div>
-
-        <BaseButton>
-          <i class="ri-download-cloud-fill"></i>
-          Download
-        </BaseButton>
-      </div>
-
-      {{details}}
-
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto eos facere hic iure modi optio suscipit? Alias architecto cupiditate dicta dolore et eum expedita itaque iure odio perspiciatis porro quia quisquam quos rerum saepe temporibus, velit! Assumenda culpa debitis, dolor esse minima molestias. Aliquid animi aut blanditiis delectus dolor ducimus exercitationem, fuga inventore ipsum laboriosam libero nobis nostrum numquam quod sapiente sunt tempora. Accusantium consectetur dignissimos dolor earum, est eum facere id, inventore laudantium molestiae nulla officia provident quo quos, sequi? Aspernatur assumenda deserunt distinctio doloremque, ducimus earum est expedita facere ipsa natus omnis, quasi quia ratione sunt ullam, voluptates!</p>
-
-      <div class="wrapper">
-        <RouterLink to="/downloads/panzer-3/traverse" class="details-item">
-
-          <div class="details-item-details">
-            <p>Traverse Box</p>
-          </div>
-        </RouterLink>
-      </div>
-    </div>
-  </main> 
-  
-  
-</template>
-
 <script setup lang="ts">
-import BreadcrumbsElement from "@/components/elements/BreadcrumbsElement.vue";
-import HeroElement from "@/components/elements/HeroElement.vue";
 import BaseButton from '@/components/base/BaseButton.vue';
 import { useProductsStore } from "@/store/products/state";
 import { useRoute } from 'vue-router';
+import { useAuthStore } from "@/store/auth/user";
+import { NAVIGATION} from "@/utilities/routes";
 import { computed, onMounted } from 'vue';
 
+const authStore = useAuthStore();
 const route = useRoute();
 const productsStore = useProductsStore();
 const product = computed(() => productsStore.getDetails);
+
+const user = computed(() => authStore.user);
 
 onMounted(() => {
   productsStore.fetchDetails(route.params.product);
 })
 
 </script>
+
+<template>
+  <main class="p-details">
+    <div class="container">
+      <RouterLink :to="NAVIGATION.downloads">
+        <i class="ri-arrow-left-line"></i>
+        Back to Downloads
+      </RouterLink>
+
+      <section class="details-wrapper">
+        <article class="details-wrapper-section instructions">
+
+        </article>
+
+        <article class="details-wrapper-section details">
+          <div class="header">
+            <h2>{{ product.name }} Controller</h2>
+            <span class="base-badge">{{ product.nationality }}</span>
+          </div>
+
+          <div class="rating">
+            <span style="margin-right: 4px">
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-fill"></i>
+              <i class="ri-star-half-line"></i>
+            </span>
+            <span>{{ product.rating || 0 }} (1 review)</span>
+          </div>
+
+          <div class="info-bar">
+            <span>
+              <i class="ri-download-2-line"></i>
+              {{ product.downloads || 0 }} downloads
+            </span>
+
+            <span>
+              <i class="ri-instance-line"></i>
+              {{ product.parts?.length || 0 }}
+              Parts
+            </span>
+
+            <span>
+              <i class="ri-calendar-line"></i>
+              Added 12/04/2025
+            </span>
+          </div>
+
+          <p class="description">{{ product.description }}</p>
+
+
+
+          <div class="tabs-element">
+            <div class="tabs-header">
+              <BaseButton>Details</BaseButton>
+              <BaseButton>Features</BaseButton>
+              <BaseButton>Inspiration</BaseButton>
+            </div>
+            <div class="tabs-content">
+              <p>
+                <strong>File Format:</strong>
+                STL (3D Printable)
+              </p>
+              <p>
+                <strong>Dimensions:</strong>
+                Compatible with standard 3D printer
+              </p>
+              <p>
+                <strong>Print Recommendation:</strong>
+                PLA 0.2mm layer height, 20% infill
+              </p>
+              <p>
+                <strong>Hardware Required:</strong>
+                Standard controller buttons, joystick, and electronics (not included)
+              </p>
+            </div>
+          </div>
+
+          <Base-Button class="cta-btn">
+            <i class="ri-download-2-line"></i>
+            Download 3D Files
+          </Base-Button>
+
+          <div style="text-align: center; font-size: 14px">
+            Please
+            <RouterLink :to="NAVIGATION.login">login</RouterLink> or
+            <RouterLink :to="NAVIGATION.register">register</RouterLink>
+            to download this model.
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+</template>

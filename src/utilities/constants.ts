@@ -1,0 +1,1 @@
+export const EMAIL_ERROR_MSG = "email must be a valid email";

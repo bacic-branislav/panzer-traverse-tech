@@ -1,11 +1,23 @@
-export type ExploreState = {
-  activities: Array <Activity>;
-  foodItems: Array <FoodItem>;
-}
-
 export type ProductState = {
   products: Array <Products>;
+  preview: Array <Products>;
   details: any;
+  loading: {
+    products: boolean,
+    details: boolean
+  }
+}
+
+export interface DownloadState {
+  items: any,
+  loading: boolean,
+}
+
+export type AuthState = {
+  user: object;
+  loading: {
+    login: boolean;
+  }
 }
 
 export type Products = {
@@ -14,14 +26,11 @@ export type Products = {
   parts: number
 }
 
-
-export type Activity = {
-  name: string;
-  distance: string;
-  image: string;
+export type LoadingAuthState = {
+  products: boolean,
+  details: boolean
 }
 
-export type FoodItem = {
-  name: string;
-  image: string;
+export type LoadingState = {
+  login: boolean;
 }
