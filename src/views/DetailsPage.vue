@@ -5,6 +5,8 @@ import { useRoute } from 'vue-router';
 import { useAuthStore } from "@/store/auth/user";
 import { NAVIGATION} from "@/utilities/routes";
 import { computed, onMounted } from 'vue';
+import BaseBack from "@/components/base/BaseBack.vue";
+import TabsElement from "@/components/elements/TabsElement.vue";
 
 const authStore = useAuthStore();
 const route = useRoute();
@@ -22,17 +24,14 @@ onMounted(() => {
 <template>
   <main class="p-details">
     <div class="container">
-      <RouterLink :to="NAVIGATION.downloads">
-        <i class="ri-arrow-left-line"></i>
-        Back to Downloads
-      </RouterLink>
+      <BaseBack text="Back to downloads"/>
 
-      <section class="details-wrapper">
-        <article class="details-wrapper-section instructions">
+      <div class="details-wrapper">
+        <div class="details-wrapper-section instructions">
 
-        </article>
+        </div>
 
-        <article class="details-wrapper-section details">
+        <div class="details-wrapper-section details">
           <div class="header">
             <h2>{{ product.name }} Controller</h2>
             <span class="base-badge">{{ product.nationality }}</span>
@@ -70,46 +69,22 @@ onMounted(() => {
           <p class="description">{{ product.description }}</p>
 
 
+          <TabsElement/>
 
-          <div class="tabs-element">
-            <div class="tabs-header">
-              <BaseButton>Details</BaseButton>
-              <BaseButton>Features</BaseButton>
-              <BaseButton>Inspiration</BaseButton>
-            </div>
-            <div class="tabs-content">
-              <p>
-                <strong>File Format:</strong>
-                STL (3D Printable)
-              </p>
-              <p>
-                <strong>Dimensions:</strong>
-                Compatible with standard 3D printer
-              </p>
-              <p>
-                <strong>Print Recommendation:</strong>
-                PLA 0.2mm layer height, 20% infill
-              </p>
-              <p>
-                <strong>Hardware Required:</strong>
-                Standard controller buttons, joystick, and electronics (not included)
-              </p>
-            </div>
-          </div>
 
           <Base-Button class="cta-btn">
             <i class="ri-download-2-line"></i>
             Download 3D Files
           </Base-Button>
 
-          <div style="text-align: center; font-size: 14px">
+          <p style="text-align: center; font-size: 14px">
             Please
-            <RouterLink :to="NAVIGATION.login">login</RouterLink> or
-            <RouterLink :to="NAVIGATION.register">register</RouterLink>
+            <RouterLink :to="NAVIGATION.login" class="strong">login</RouterLink> or
+            <RouterLink :to="NAVIGATION.register" class="strong">create account</RouterLink>
             to download this model.
-          </div>
-        </article>
-      </section>
+          </p>
+        </div>
+      </div>
     </div>
   </main>
 </template>

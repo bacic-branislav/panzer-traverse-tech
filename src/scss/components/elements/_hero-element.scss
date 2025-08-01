@@ -13,13 +13,42 @@
   flex-direction: column;
   justify-content: center;
 
-  .content {
+  .scroll-icon {
     color: #fff;
-    width: 100%;
+    font-size: 50px;
+    text-align: center;
+    display: block;
+    margin-top: 150px;
+  }
 
-    .subtitle {
-      margin: 12px 0 32px 0;
-      line-height: 22px;
+  .content {
+    width: 100%;
+    margin-top: 150px;
+
+    .pre-title {
+      color: #fff;
+    }
+
+    .hero-title {
+      font-weight: 400;
+      font-size: 60px;
+      line-height: 60px;
+      letter-spacing: -3px;
+      color: #fff;
+
+      @include media-breakpoint-up(md) {
+        font-size: 96px;
+        letter-spacing: -4.8px;
+        line-height: 96px;
+      }
+    }
+
+    .hero-subtitle {
+      color: #fff;
+      font-size: 18px;
+      line-height: 28px;
+      font-weight: 500;
+      margin: 32px 0;
     }
 
     .action-elements {

@@ -1,75 +1,86 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/breakpoints" as *;
 
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
-@font-face {
-  font-family: "remixicon";
-  src: url("//cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.woff2") format("woff2");
-  font-display: swap;
+.pre-title {
+  font-family: "IBM Plex Mono", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.3px;
+  line-height: 24px;
+  text-transform: uppercase;
 }
 
-
-@font-face {
-  font-family: 'DIN 1451 Std Engschrift';
-  font-style: normal;
-  font-weight: normal;
-  src: local('DIN 1451 Std Engschrift'), url('@/assets/fonts/DINEngschriftStd.woff') format('woff');
+.strong {
+  font-weight: 600;
+  color: #09090b;
 }
-  
-
-@font-face {
-  font-family: 'DIN 1451 Std Mittelschrift';
-  font-style: normal;
-  font-weight: normal;
-  src: local('DIN 1451 Std Mittelschrift'), url('@/assets/fonts/DINMittelschriftStd.woff') format('woff');
-}
-
-.roboto-regular {
-   font-family: "Roboto", sans-serif;
-   font-optical-sizing: auto;
-   font-weight: 400;
-   font-style: normal;
-   font-variation-settings: "wdth" 100;
-}
-
-.staatliches-regular {
-  font-family: "Staatliches", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  color: $font-color;
-}
-
 
 a {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
   text-decoration: none;
   display: inline-block;
-  font-weight: 500;
   color: $font-color;
+}
+
+p {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: #4a5565;
+  font-weight: 400;
+}
+
+span {
+  font-family: "Inter", sans-serif;
+}
+
+ul {
+  padding: none;
+  font-size: 14px;
+  line-height: 24px;
+  color: #4a5565;
+  font-family: "Inter", sans-serif;
+  list-style: none;
+
 }
 
 h1 {
-  font-family: "Staatliches", sans-serif;
-  font-size: 36px;
-  line-height: 40px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 48px;
+  letter-spacing: -1.2px;
+  margin-top: 8px;
+  color: #030712;
 
   @include media-breakpoint-up(md) {
-    letter-spacing: 4px;
-    font-size: 64px;
-    line-height: 68px;
+    font-size: 60px;
+    line-height: 60px;
+    letter-spacing: -1.5px;
   }
 }
 
 h2 {
-  font-family: "Staatliches", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.75px;
+  line-height: 36px;
+  color: #030712;
+
+  @include media-breakpoint-up(md) {
+    font-size: 40px;
+    letter-spacing: -1px;
+    line-height: 50px;
+  }
 }
 
 h3 {
-  font-size: 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #030712;
 }

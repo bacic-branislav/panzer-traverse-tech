@@ -1,25 +1,30 @@
+@use "@/scss/abstracts/variables" as *;
+
 .base-input {
   margin-bottom: 16px;
+  font-family: "Inter", sans-serif;
 
   &-label-wrapper {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 6px;
 
     .label {
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 24px;
       margin-right: auto;
+      color: #101828;
     }
 
     .hint {
       font-size: 14px;
-      font-family: "Roboto Thin", sans-serif;
-      letter-spacing: normal;
-      margin-top: -1px;
+      font-weight: 400;
+      color: #4a5565;
 
       i {
         margin-right: -2px;
-        color: cadetblue;
+        color: #00b8db;
       }
     }
   }
@@ -27,38 +32,51 @@
   &-wrapper {
     position: relative;
 
+    &.has-error {
+      input { border-color: #e7000b }
+      .input-icon { color: #e7000b }
+    }
+
+    &.is-valid {
+      input { border-color: #a2a7b0 }
+      .input-icon { color: #9ae600 }
+    }
+
     input {
+      font-family: "Inter", sans-serif;
+      background-color: #fff;
+      border-radius: 6px;
       width: 100%;
-      padding: 15px;
-      font-size: 16px;
-      border: 2px solid #d0d0d0;
+      padding: 12px 25px 12px 12px;
+      font-size: 14px;
+      border: 1px solid #a2a7b0;
       outline: none;
-      font-family: "Roboto Light", sans-serif;
+      color: #101828;
+
+      &::placeholder {
+        color: #a2a7b0
+      }
 
       &:focus {
-        border: 2px solid #d0d0d0;
+        outline: 2px solid #4f39f6;
+        outline-offset: -2px;
       }
     }
 
-    i {
+    .input-icon {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       right: 5px;
-      color: #42b983;
     }
   }
 
   .message {
-    font-size: 12px;
-    display: flex;
+    font-size: 14px;
+    display: block;
+    line-height: 20px;
     margin-top: 4px;
-    font-weight: 500;
-
-    i {
-      font-size: 14px;
-      margin-right: 2px;
-      color: #872b2b;
-    }
+    font-weight: 400;
+    color: #e7000b;
   }
 }

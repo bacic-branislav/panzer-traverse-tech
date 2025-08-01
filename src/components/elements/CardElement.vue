@@ -19,7 +19,9 @@ defineProps({
     <div class="card-body">
       <div class="header">
         <h3>{{ product.name }} Controller</h3>
-        <span class="base-badge">{{ product.nationality }}</span>
+        <span class="base-badge">
+          {{ product.nationality }}
+        </span>
       </div>
       <div class="rating">
         <i class="ri-star-fill"></i>
@@ -39,8 +41,9 @@ defineProps({
         {{ product.downloads }} downloads
       </span>
 
-      <RouterLink :to="`${NAVIGATION.downloads}/${product.slug}`" class="base-button">
+      <RouterLink :to="`${NAVIGATION.downloads}/${product.slug}`" class="base-button btn-secondary">
         View Details
+        <i class="ri-arrow-right-long-line"></i>
       </RouterLink>
     </div>
   </article>

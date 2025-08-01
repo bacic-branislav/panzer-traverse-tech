@@ -6,6 +6,8 @@ const props = defineProps({
   loading: Boolean,
   small: Boolean,
   large: Boolean,
+  plain: Boolean,
+  secondary: Boolean,
   type: {
     type: String,
     default: "button",
@@ -15,20 +17,24 @@ const props = defineProps({
   }
 })
 
-const getSize = computed(() => {
+const getClass = computed(() => {
   return {
     "btn-sm": props.small,
-    "btn-lg": props.large
+    "btn-lg": props.large,
+    "btn-plain": props.plain,
+    "btn-secondary": props.secondary
   }
 })
 </script>
 
 <template>
   <button
-    :class="['base-button', getSize]"
+    :class="['base-button', getClass]"
     :disabled="disabled"
     :type="type"
   >
     <slot/>
+
+    <i v-if="loading" class="ri-loader-4-line loader-icon"></i>
   </button>
 </template>

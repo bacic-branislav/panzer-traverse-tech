@@ -10,8 +10,8 @@ $button-text-size: 14px;
 $letter-spacing: 1.4px;
 
 //paddings
-$padding-x-lg: 32px;
-$padding-y-lg: 14px;
+$padding-x-lg: 16px;
+$padding-y-lg: 8px;
 
 $padding-x-sm: 27px;
 $padding-y-sm: 9px;
@@ -22,3 +22,11 @@ $primary-color: #872b2b;
 $secondary-color: blue;
 $white-color: #fff;
 $black-color: #000;
+
+$card-box-shadow:
+  rgba(0, 0, 0, 0) 0 0 0 0,
+  rgba(0, 0, 0, 0) 0 0 0 0,
+  rgba(0, 0, 0, 0) 0 0 0 0,
+  rgba(0, 0, 0, 0) 0 0 0 0,
+  rgba(0, 0, 0, 0.1) 0 1px 3px 0,
+  rgba(0, 0, 0, 0.1) 0 1px 2px -1px;

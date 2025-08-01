@@ -5,6 +5,8 @@
 .card {
   border-radius: 4px;
   overflow: hidden;
+  box-shadow: $card-box-shadow;
+  background-color: #fff;
 
   &:hover {
     img {
@@ -25,8 +27,7 @@
   }
 
   &-body {
-    background-color: #f2f2f2;
-    padding: 24px 24px 12px 24px;
+    padding: 24px;
 
     .header {
       display: flex;justify-content: space-between;
@@ -39,18 +40,15 @@
   }
 
   &-footer {
-    background-color: #f2f2f2;
-    padding: 4px 24px 24px 24px;
+    border-top: 1px solid #e5e7eb;
+    padding: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     span {
+      font-size: 14px;
       font-weight: 600;
-    }
-
-    .base-button {
-      padding: 10px 12px;
     }
   }
 }

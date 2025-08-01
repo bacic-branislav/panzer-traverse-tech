@@ -1,3 +1,5 @@
+@use "@/scss/abstracts/variables" as *;
+
 .navigation-element {
   position: fixed;
   width: 100%;
@@ -5,6 +7,7 @@
   padding: 5px 0;
   z-index: 1;
   top: 0;
+  border-bottom: 1px solid #e5e7eb;
  
   .container {
     display: flex;

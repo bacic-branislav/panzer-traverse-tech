@@ -14,6 +14,7 @@ const submitLogout = async () => {
   await router.push(NAVIGATION.home);
 }
 
+const loading = computed(() => authStore.loading);
 </script>
 
 <template>
@@ -30,14 +31,16 @@ const submitLogout = async () => {
       </div>
 
       <div>
-        <template v-if="!user">
+        <template v-if="user">
+          <span style="margin-right: 8px">Welcome, {{ user?.username }}</span>
+          <BaseButton :loading="loading.logout" @click="submitLogout">Logout</BaseButton>
+        </template>
+
+        <template v-else>
           <RouterLink :to="NAVIGATION.login">Login</RouterLink> |
           <RouterLink :to="NAVIGATION.register">Register</RouterLink>
         </template>
-
-        <BaseButton v-else @click="submitLogout">Logout</BaseButton>
       </div>
     </div>
-    {{authStore.user}}
   </nav>
 </template>

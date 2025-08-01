@@ -14,10 +14,8 @@ export interface DownloadState {
 }
 
 export type AuthState = {
-  user: object;
-  loading: {
-    login: boolean;
-  }
+  user:null;
+  loading: LoadingState
 }
 
 export type Products = {
@@ -33,4 +31,7 @@ export type LoadingAuthState = {
 
 export type LoadingState = {
   login: boolean;
+  register: boolean;
+  logout: boolean,
+  check: boolean,
 }

@@ -16,10 +16,6 @@ const props = defineProps({
     type: String,
     required: false
   },
-  hint: {
-    type: String,
-    required: false
-  },
   successMessage: {
     type: String,
     default: "",
@@ -53,22 +49,9 @@ const {
       <label v-if="label" :for="name" class="label">
         {{ label }}
       </label>
-
-      <span v-if="hint" class="hint">
-        <i class="ri-information-line"></i>
-        {{ hint }}
-      </span>
-
-      <span
-        v-if="type === 'email' && errorMessage === EMAIL_ERROR_MSG"
-        class="hint email-hint"
-      >
-        <i class="ri-information-line"></i>
-        Use format: john@example.com
-      </span>
     </div>
 
-    <div class="base-input-wrapper">
+    <div :class="['base-input-wrapper', { 'has-error': errorMessage, 'is-valid': meta.valid }]">
       <input
         :name="name"
         :id="name"
@@ -80,16 +63,12 @@ const {
       >
 
       <i v-if="errorMessage || meta.valid"
-        :class="meta.valid ? 'ri-check-fill' : 'ri-error-warning-fill'">
+        :class="['input-icon', meta.valid ? 'ri-checkbox-circle-fill' : 'ri-error-warning-fill']">
       </i>
     </div>
 
-    <span v-if="errorMessage || meta.valid" class="message">
-      <i v-if="errorMessage || successMessage"
-         :class="meta.valid ? 'ri-checkbox-circle-fill' : 'ri-error-warning-fill'">
-      </i>
-
+    <p v-if="errorMessage || meta.valid" class="message" aria-label="input message">
       {{ errorMessage || successMessage }}
-    </span>
+    </p>
   </div>
 </template>

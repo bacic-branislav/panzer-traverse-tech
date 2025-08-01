@@ -1,28 +1,39 @@
 import { defineStore } from 'pinia';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { AuthState, LoadingState } from "@/utilities/interfaces";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 
 export const useAuthStore = defineStore('useAuthStore', {
   state: ():AuthState => {
     return {
-      user: {},
+      user: null,
       loading: {
-        login: false
+        login: false,
+        register: false,
+        logout: false,
+        check: false,
       } as LoadingState
     }
   },
 
   actions: {
     checkUser():void {
+      this.toggleLoading('check', true);
       const auth = getAuth();
-      auth.onAuthStateChanged((user:any):void => {
-        this.user = user;
+      auth.onAuthStateChanged(async (user:any) => {
+        if (user) {
+          const details = await this.fetchUserDetails(user.uid);
+          this.user = { ...user, ...details };
+        } else {
+          this.user = user;
+        }
+        this.toggleLoading('check', false);
       });
     },
 
     async register(data: { username: string, password: string, email: string }) {
       try {
+        this.toggleLoading('register', true);
         const auth = getAuth();
         const db = getFirestore();
 
@@ -38,7 +49,20 @@ export const useAuthStore = defineStore('useAuthStore', {
       } catch (error) {
         return false;
       } finally {
-        //
+        this.toggleLoading('register', false);
+      }
+    },
+
+    async fetchUserDetails(uid: string):Promise<any> {
+      const db = getFirestore();
+      const userDocRef = doc(db, "users", uid);
+      const userDocSnap = await getDoc(userDocRef);
+
+      if (userDocSnap.exists()) {
+        return userDocSnap.data();
+      } else {
+        console.warn("No such user found in Firestore.");
+        return null;
       }
     },
 
@@ -47,7 +71,8 @@ export const useAuthStore = defineStore('useAuthStore', {
         const auth = getAuth();
         this.toggleLoading('login', true);
         const response = await signInWithEmailAndPassword(auth, data.email, data.password);
-        this.user = response.user;
+        const details = await this.fetchUserDetails(response.user.uid);
+        this.user = { ...response.user, ...details };
         return true;
       } catch (error) {
         return false;
@@ -58,10 +83,14 @@ export const useAuthStore = defineStore('useAuthStore', {
 
     async logout() {
       try {
+        this.toggleLoading('logout', true);
         const auth = getAuth();
         await signOut(auth);
+        this.user = null;
       } catch (e) {
         console.error(e)
+      } finally {
+        this.toggleLoading('logout', false);
       }
     },
 

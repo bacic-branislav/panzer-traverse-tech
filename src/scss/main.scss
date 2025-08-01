@@ -2,10 +2,12 @@
 @forward "abstracts/breakpoints";
 
 @use "utilities/reset";
+@use "utilities/fonts";
 @use "utilities/typography";
 @use "utilities/general";
 @use "utilities/helpers";
 
+@use "components/base/base-back";
 @use "components/base/base-button";
 @use "components/base/base-input";
 @use "components/base/base-badge";

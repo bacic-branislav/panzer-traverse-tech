@@ -21,10 +21,32 @@ onBeforeMount(() => {
     <HeroElement/>
 
     <main>
-      <div class="container">
-        <section>
-          <h2 class="section-title">Featured Controllers</h2>
-          <p class="section-subtitle">Check out our most popular tank-inspired designs</p>
+      <section>
+        <div class="container">
+          <p class="pre-title">
+            Explore controllers
+          </p>
+          <h2 class="section-title">
+            Experience the thrill of tank warfare with Panzer Controls
+          </h2>
+          <p class="section-subtitle">
+            At Panzer Controls, we are dedicated to bringing immersive gaming experiences to life. Our mission is to provide gamers with innovative, 3D printable game controllers that replicate the authentic feel of tank gunner controls. Join us in revolutionizing the way you play and feel the power of precision at your fingertips.
+          </p>
+          <RouterLink :to="NAVIGATION.about" class="base-button btn-secondary">
+            Learn More
+          </RouterLink>
+        </div>
+      </section>
+
+      <section class="gray-bg">
+        <div class="container">
+          <p class="pre-title">Explore controllers</p>
+          <h2 class="section-title">
+            Featured Controllers
+          </h2>
+          <p class="section-subtitle">
+            Check out our most popular tank-inspired designs
+          </p>
 
           <div class="grid-wrapper">
             <CardElement
@@ -36,40 +58,50 @@ onBeforeMount(() => {
 
           <RouterLink :to="NAVIGATION.downloads" class="base-button" style="margin-top: 50px;">
             View All Controllers
-            <i class="ri-arrow-right-line"></i>
+            <i class="ri-arrow-right-long-line"></i>
           </RouterLink>
-        </section>
-      </div>
+        </div>
+      </section>
 
 
-      <section class="gray-bg">
+      <section>
         <div class="container">
-          <h2 class="section-title">Why choose our models</h2>
-          <p class="section-subtitle">Unique controllers that combine historical accuracy with gaming experience</p>
+          <p class="pre-title">
+            Download & Assembly
+          </p>
+          <h2 class="section-title">
+            Your Guide to Assembling the Game Controller
+          </h2>
+          <p class="section-subtitle">
+            Follow our simple steps to download, print, and assemble your very own 3D printable game controller.
+            This guide ensures you have everything you need to create a functional and fun gaming accessory.
+            Let's get started on bringing your tank gunner controls to life!
+          </p>
+
 
           <div class="our-models-wrapper">
             <article class="our-model-item">
               <div class="icon">
                 <i class="ri-download-2-line"></i>
               </div>
-              <h3>Free Downloads</h3>
-              <p>All our 3D models are completely free to download for personal use.</p>
+              <h3>Step 1: Download the Files</h3>
+              <p>Log in to access the downloadable files.</p>
             </article>
 
             <article class="our-model-item">
               <div class="icon">
-                <i class="ri-shield-line"></i>
+                <i class="ri-box-3-line"></i>
               </div>
-              <h3>High Quality</h3>
-              <p>Each model is meticulously designed to be both historically accurate and 3D printable.</p>
+              <h3>Step 2: Print the Components</h3>
+              <p>Use a 3D printer to create each part.</p>
             </article>
 
             <article class="our-model-item">
               <div class="icon">
-                <i class="ri-gemini-line"></i>
+                <i class="ri-tools-fill"></i>
               </div>
-              <h3>Unique Designs</h3>
-              <p>Our controllers blend gaming functionality with authentic WW2 tank aesthetics.</p>
+              <h3>Step 3: Assemble Your Controller</h3>
+              <p>Follow our assembly instructions for best results.</p>
             </article>
           </div>
         </div>

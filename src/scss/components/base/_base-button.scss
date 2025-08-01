@@ -1,23 +1,69 @@
 @use "../../abstracts/variables" as *;
 
 .base-button {
-  padding: $padding-y-lg $padding-x-lg;
-  border-radius: $border-radius;
-  background-color: $button-bg;
-  font-size: $button-text-size;
-  border: none;
-  color: $button-text;
+  font-family: "Inter", sans-serif;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: #09090b;
+  font-size: 14px;
+  border: 1px solid transparent;
+  color: #fff;
   cursor: pointer;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   transition: .2s all ease;
-  letter-spacing: .5px;
+  line-height: 24px;
+
+  .loader-icon {
+    margin-left: 2px;
+    animation-name: spin;
+    animation-duration: 2500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    display: inline-block;
+  }
+
+  @keyframes spin {
+    from {
+      transform:rotate(0deg);
+    }
+    to {
+      transform:rotate(360deg);
+    }
+  }
 
   &:hover {
-    background-color: $black-color;
+    background-color: #212126;
+  }
+
+  &.btn-plain {
+    background-color: transparent;
+    color: #09090b;
+
+    &:hover {
+      background-color: rgba(9, 9, 11, 0.05);
+    }
+  }
+
+  &.btn-secondary {
+    background-color: transparent;
+    border: 1px solid #e5e7eb;
+    color: #09090b;
+
+    &:hover {
+      background-color: rgba(9, 9, 11, 0.05);
+    }
+  }
+
+  &.btn-lg {
+    padding: 10px 14px;
   }
 
   &.btn-sm {
-    padding: $padding-y-sm $padding-x-sm;
+    padding: 6px 10px;
+  }
+
+  &.btn-xs {
+    font-size: 12px;
+    padding: 4px 8px;
   }
 }

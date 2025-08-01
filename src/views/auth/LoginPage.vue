@@ -5,17 +5,20 @@ import { NAVIGATION } from "@/utilities/routes";
 import { Form } from "vee-validate";
 import { useRouter, useRoute } from "vue-router";
 import { useAuthStore } from "@/store/auth/user";
-import { onBeforeMount } from "vue";
+import { onBeforeMount, computed } from "vue";
 import * as yup from 'yup';
+import BaseBack from "@/components/base/BaseBack.vue";
 
 const authStore = useAuthStore();
+
 const router = useRouter();
 const route = useRoute();
-
 const schema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().min(6).required(),
 });
+
+const loading = computed(() => authStore.loading);
 
 const onSubmit = async (values, { resetForm }) => {
   const success = await authStore.login(values);
@@ -48,10 +51,7 @@ const showError = () => {
           <p>Enter your credentials to access your account</p>
         </div>
 
-        <BaseButton @click="router.go(-1)">
-          <i class="ri-arrow-left-line"></i>
-          Back
-        </BaseButton>
+        <BaseBack/>
 
         <div class="form-wrapper">
           <Form
@@ -62,7 +62,7 @@ const showError = () => {
             <BaseInput
               field-name="email"
               type="email"
-              label="Email address"
+              label="Email"
             />
 
             <BaseInput
@@ -74,12 +74,21 @@ const showError = () => {
             <BaseButton
               :disabled="!meta.valid"
               type="submit"
+              :loading="loading.login"
             >
-              Sign In
+              Sign in to account
             </BaseButton>
           </Form>
 
           <p class="error-msg"> User email or password is not correct. Please try again. </p>
+
+          <p>
+            Don't have an account?
+            <RouterLink :to="NAVIGATION.register" class="strong">
+              Get access
+              <i class="ri-arrow-right-long-line"></i>
+            </RouterLink>
+          </p>
         </div>
       </div>
     </section>
